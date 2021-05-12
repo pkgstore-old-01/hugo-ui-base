@@ -11,6 +11,16 @@ body {
             padding-left: unset;
           }
         }
+
+        &-spi {
+          cursor: pointer;
+
+          span {
+            &:last-child {
+              opacity: .6;
+            }
+          }
+        }
       }
     }
   }
