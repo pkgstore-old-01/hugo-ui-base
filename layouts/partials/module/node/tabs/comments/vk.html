@@ -1,0 +1,20 @@
+{{ $x := (.context | default .) }}
+{{ $id := (printf "vk-comments-%s" ($x.File.UniqueID | default "")) }}
+{{ $token := ($x.Site.Params.api.vk.app_id | default "") }}
+
+<div id="{{ $id }}"></div>
+<script>
+  function ext_vk_comments() {
+    VK.init({
+      apiId: '{{ $token }}',
+      onlyWidgets: true
+    });
+    VK.Widgets.Comments('{{ $id }}',
+      {
+        pageUrl: '{{ $x.Permalink }}'
+      },
+      '{{ $x.Params.uuid }}'
+    );
+  }
+</script>
+<script src="https://vk.com/js/api/openapi.js" onload="ext_vk_comments();" async></script>

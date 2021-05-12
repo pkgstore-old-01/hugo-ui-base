@@ -1,0 +1,111 @@
+{{ $x := (.context | default .) }}
+{{ $id := (printf "node-cover-%s" ($x.File.UniqueID | default "")) }}
+{{ $img_int := (($x.Page.Resources.Match "storage/cover.*") | default "") }}
+{{ $img_ext := ($x.Params.images | default (slice "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3")) }}
+
+{{ $width := ($x.Params.cover.image.width | default "1600") }}
+{{ $height := ($x.Params.cover.image.height | default "900") }}
+{{ $crop := ($x.Params.cover.image.crop | default "entropy") }}
+{{ $fit := "crop" }}
+
+{{ $srcset := (slice
+(dict "width" "640" "height" "360")
+(dict "width" "768" "height" "432")
+(dict "width" "1024" "height" "576")
+(dict "width" "1280" "height" "720")
+(dict "width" "1600" "height" "900")
+) }}
+
+<div id="{{ $id }}" class="cover-image cover-node carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner rounded">
+    {{ with ($img_int) }}
+
+    <!-- image-internal -->
+    {{ if ((len $img_int) | lt 1) }}
+    <div class="carousel-indicators">
+      {{ range $key, $src := $img_int }}
+      <button type="button" data-bs-target="#{{ $id }}" data-bs-slide-to="{{ $key }}" class="{{ if (eq $key 0) }}active{{ end }}" aria-label="Slide {{ $key }}"></button>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ range $key, $src := $img_int }}
+    {{ $src := $src }}
+    {{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
+    {{ $filename := ($src.Name | path.Base) }}
+    <div class='carousel-item {{ if (in $filename ".00.") }}active{{ end }}'>
+      <picture>
+        <source srcset='
+                  {{ range $i, $srcset := $srcset }}
+                  {{ $thumb := ($src.Fill (printf "%sx%s %s" .width .height $crop)) }}
+                  {{ if $i }},{{ end }}
+                  {{ $thumb.RelPermalink }} {{ .width }}w
+                  {{ end }}
+                  '
+                sizes="(min-width: 576px) 100vw"/>
+        <img class="d-block w-100 h-100"
+             src="{{ $thumb.RelPermalink }}"
+             width="{{ $width }}" height="{{ $height }}"
+             alt="{{ (.Name | path.Base) }}" loading="lazy"/>
+      </picture>
+    </div>
+    {{ end }}
+    <!-- / image-internal -->
+
+    {{ else }}
+
+    <!-- image-external -->
+    {{ if ((len $img_ext) | lt 1) }}
+    <div class="carousel-indicators">
+      {{ range $key, $src := $img_ext }}
+      <button type="button" data-bs-target="#{{ $id }}" data-bs-slide-to="{{ $key }}" class="{{ if (eq $key 0) }}active{{ end }}" aria-label="Slide {{ $key }}"></button>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ range $key, $src := $img_ext }}
+    <div class="carousel-item {{ if (eq $key 0) }}active{{ end }}">
+      {{ $url := urls.Parse $src }}
+      {{ if (eq $url.Host "images.unsplash.com") }}
+      <picture>
+        <source srcset='
+                  {{ range $i, $e := $srcset }}
+                  {{ if $i }},{{ end }}
+                  {{ $src }}?crop={{ $crop }}&amp;w={{ .width }}&amp;h={{ .height }}&amp;fit={{ $fit }}&amp;auto=format {{ .width }}w
+                  {{ end }}
+                  '
+                sizes="(min-width: 576px) 100vw"/>
+        <img class="d-block w-100 h-100"
+             src="{{ $src }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format"
+             width="{{ $width }}" height="{{ $height }}"
+             alt="{{ $src }}" loading="lazy"/>
+      </picture>
+      {{ else }}
+      <picture>
+        <img class="d-block w-100 h-100"
+             src="{{ $src }}"
+             width="{{ $width }}" height="{{ $height }}"
+             alt="{{ $src }}" loading="lazy"/>
+      </picture>
+      {{ end }}
+    </div>
+    {{ end }}
+    <!-- / image-external -->
+
+    {{ end }}
+  </div>
+
+  <!-- buttons-control -->
+  {{ if ((or (len $img_int) (len $img_ext)) | lt 1) }}
+  <button class="carousel-control-prev" type="button" data-bs-target="#{{ $id }}" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">{{ i18n "previous" }}</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#{{ $id }}" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">{{ i18n "next" }}</span>
+  </button>
+  {{ end }}
+  <!-- / buttons-control -->
+
+</div>

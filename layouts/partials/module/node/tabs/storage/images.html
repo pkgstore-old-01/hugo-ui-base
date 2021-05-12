@@ -1,0 +1,25 @@
+{{ $x := (.context | default .) }}
+{{ $width := ($x.Site.Data.cfg.node.storage.image.cover_size | default "400") }}
+{{ $height := ($x.Site.Data.cfg.node.storage.image.cover_size | default "400") }}
+{{ $crop := ($x.Site.Data.cfg.node.storage.image.cover_crop | default "entropy") }}
+
+{{ with ($x.Page.Resources.Match "storage/*") }}
+
+<div class="article-body ext-gallery">
+  <div class="row row-cols-auto g-3 spotlight-group" data-ext-fn="ext-gallery">
+    {{ range . }}
+    {{ if (in .MediaType.MainType "image") }}
+    {{ $src := . }}{{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
+    <div class="col">
+      <a class="spotlight d-inline-block" href="{{ $src.RelPermalink }}" data-ext-fn="ext-gallery-item">
+        <picture>
+          <img class="img-thumbnail" src="{{ $thumb.RelPermalink }}" width="{{ $width }}" height="{{ $height }}" alt="{{ (.Name | path.Base) }}"/>
+        </picture>
+      </a>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}

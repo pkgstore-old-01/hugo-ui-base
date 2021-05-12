@@ -1,0 +1,61 @@
+{{ $x := (.context | default .) }}
+{{ $posts := (where $x.Site.RegularPages "Type" "in" $x.Site.Params.sections.blog) }}
+{{ $count := ($x.Site.Data.cfg.index.posts.count | default "9") }}
+{{ $view_mode := ($x.Site.Data.cfg.index.posts.view | default "0") }}
+{{ $sidebar_on := ($x.Site.Data.cfg.sidebar.on | default 0) }}
+{{ $sidebar_news_on := ($x.Site.Data.cfg.sidebar.news.on | default 0) }}
+
+{{ if ($sidebar_news_on) }}
+{{ $news := (where $posts ".Params.categories" "intersect" (slice "News")) }}
+{{ $posts = ($posts | complement $news) }}
+{{ end }}
+
+{{ $posts = ($posts | first $count) }}
+
+{{ $container_open := ("<div class='container'>" | safeHTML) }}
+{{ $container_close := ("</div>" | safeHTML) }}
+
+{{ if (and ($sidebar_on) ($x.IsHome)) }}
+{{ $container_open = "" }}
+{{ $container_close = "" }}
+{{ end }}
+
+{{ with ($posts) }}
+<div class="section py-3 py-md-5">
+  {{ $container_open }}
+  <div class="row row-cols-1 g-3">
+    {{ if (eq $view_mode "0") }}
+    <div class="col">
+      {{ range (first 1 .) }}
+      {{ $summary := (delimit (slice .Summary "") "") }}
+      {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+      {{ end }}
+    </div>
+    <div class="col">
+      <div class="row row-cols-1 row-cols-lg-2 g-3">
+        {{ range (after 1 .) }}
+        <div class="col">
+          {{ $summary := (delimit (slice .Summary "") "") }}
+          {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{ if (eq $view_mode "1") }}
+    <div class="col">
+      <div class="row row-cols-1 row-cols-lg-2 g-3">
+        {{ range . }}
+        <div class="col">
+          {{ $summary := (delimit (slice .Summary "") "") }}
+          {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  {{ $container_close }}
+</div>
+{{ end }}

@@ -1,0 +1,7 @@
+{{ $x := (.context | default .) }}
+{{ $id := (printf "fb-comments-%s" ($x.File.UniqueID | default "")) }}
+{{ $lang := ($x.Site.LanguageCode | default "en-US") }}
+{{ $lang = (replace $lang "-" "_") }}
+
+<script src="https://connect.facebook.net/{{ $lang }}/sdk.js#xfbml=1&version=v10.0" crossorigin="anonymous" async></script>
+<div class="fb-comments" data-href="{{ $x.Permalink }}" data-width="100%" data-numposts=""></div>

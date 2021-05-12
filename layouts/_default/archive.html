@@ -1,0 +1,34 @@
+{{ define "main" }}
+
+{{ $posts := (where $.Site.RegularPages "Type" "in" $.Site.Params.sections.blog) }}
+{{ $pag_items := $.Site.Data.cfg.archive.paginate }}
+
+<div class="section py-3 py-md-5">
+  <div class="container">
+    {{ partial "breadcrumb" . }}
+
+    {{ range (.Paginate ($posts.GroupByDate "2006") $pag_items).PageGroups }}
+    <div class="row mb-3">
+      <div class="col">
+        <article>
+          <h2>{{ .Key }}</h2>
+          <div class="article-body">
+            <ul class="list-unstyled">
+              {{ range .Pages }}
+              <li class="d-flex">
+                <div class="me-3"><code>{{ (.Date.UTC.Format "01/02") }}</code></div>
+                <div class="flex-grow-1"><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+    {{ end }}
+
+    {{ partial "pagination" . }}
+  </div>
+</div>
+
+{{ end }}

@@ -1,0 +1,7 @@
+{{ define "main" }}
+
+{{ if ($.Site.Data.cfg.index.posts.on) }}
+{{ partial "module/index/posts" (dict "context" .) }}
+{{ end }}
+
+{{ end }}

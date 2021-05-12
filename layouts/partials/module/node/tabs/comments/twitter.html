@@ -1,0 +1,12 @@
+{{ $x := (.context | default .) }}
+{{ $tweets := ($x.Params.tweets | default "") }}
+
+<div class="row row-cols-1 row-cols-lg-2 g-3">
+  {{ range ($tweets) }}
+  <div class="col">
+    {{ $url := (printf "https://api.twitter.com/1/statuses/oembed.json?id=%v" .) }}
+    {{ $json := (getJSON $url) }}
+    {{ ($json.html | safeHTML) }}
+  </div>
+  {{ end }}
+</div>

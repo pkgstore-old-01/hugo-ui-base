@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="section py-3 py-md-5">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-lg-2 g-3">
+      <div class="col">
+        <article>
+          <h2>{{ i18n "404.b1_h1" }}</h2>
+          <div class="article-body">
+            <p>{{ i18n "404.b1_p1" }}</p>
+            <p>{{ i18n "404.b1_p2" }}</p>
+            <ul>
+              <li><a href='{{ ("/" | relLangURL) }}'>{{ i18n "404.homepage" }}</a></li>
+              <li><a href='{{ ("archive" | relLangURL) }}'>{{ i18n "404.archive" }}</a></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="col">
+        <article>
+          <h2>{{ i18n "404.b2_h1" }}</h2>
+          <div class="article-body">
+            <p>{{ i18n "404.b2_p1" }}</p>
+            <div class="mb-3">
+              {{ partial "module/search/form" (dict "context" . "id" "google") }}
+            </div>
+            <div class="mb-3">
+              {{ partial "module/search/form" (dict "context" . "id" "yandex") }}
+            </div>
+            <div class="mb-3">
+              {{ partial "module/search/form" (dict "context" . "id" "bing") }}
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

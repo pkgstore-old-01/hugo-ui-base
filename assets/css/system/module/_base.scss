@@ -1,0 +1,86 @@
+$color-00: #ffffff;
+$color-01: #f8f9fa;
+
+html {
+  scroll-padding-top: 4rem;
+}
+
+body {
+  @include font-base();
+  padding-top: 57px;
+
+  a {
+    text-decoration: none;
+  }
+
+  &.type-authors {
+    article {
+      header {
+        .article-cover {
+          position: relative;
+
+          .cover-avatar {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            z-index: 100;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  > header {
+    .navbar {
+      @include font-cond();
+
+      &.headroom {
+        will-change: transform;
+        transition: transform 200ms linear;
+
+        &--pinned {
+          transform: translateY(0%);
+        }
+
+        &--unpinned {
+          transform: translateY(-100%);
+        }
+      }
+
+      &-brand {
+        @include font-brand();
+      }
+    }
+  }
+}
+
+body {
+  > .wrapper {
+    > footer {
+      > .section {
+        &:nth-child(even) {
+          background-color: $color-01;
+        }
+
+        &:nth-child(odd) {
+          background-color: $color-01;
+        }
+      }
+
+      .fa-heart {
+        color: #fe6e3a;
+      }
+    }
+
+    > main {
+      .node-icon {
+        $size: 4rem;
+
+        width: $size;
+        height: $size;
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{{- $dateC := (.Page.PublishDate.UTC.Format "2006-01-02T15:04:05Z07:00") -}}
+{{- $dateP := (.Page.PublishDate.UTC.Format "2006-01-02T15:04:05Z07:00") -}}
+{{- $dateM := (.Page.Lastmod.UTC.Format "2006-01-02T15:04:05Z07:00") -}}
+
+{
+  "data": {
+    "site": {
+      "name": "{{ $.Site.Title }}",
+      "description": "{{ $.Site.Params.description }}",
+      "url": "{{ $.Site.BaseURL }}"
+    },
+    "page": {
+      "name": "{{ .Page.Title }}",
+      "images": [{{ range $i, $e := (.Page.Params.images) }}{{ if $i }},{{ end }}"{{ $e }}"{{ end }}],
+      "description": {{ jsonify (((.Page.Description | default .Page.Summary) | plainify) | chomp) }},
+      "content": {{ jsonify (.Page.Plain | chomp) }},
+      "authors": [{{ range $i, $e := (.GetTerms "authors") }}{{ if $i }},{{ end }}{"name":"{{ $e.LinkTitle }}","url":"{{ $e.Permalink }}"}{{ end }}],
+      "categories": [{{ range $i, $e := (.GetTerms "categories") }}{{ if $i }},{{ end }}{"name":"{{ $e.LinkTitle }}","url":"{{ $e.Permalink }}"}{{ end }}],
+      "tags": [{{ range $i, $e := (.GetTerms "tags") }}{{ if $i }},{{ end }}{"name":"{{ $e.LinkTitle }}","url":"{{ $e.Permalink }}"}{{ end }}],
+      "date": {
+        "created": "{{ $dateC }}",
+        "published": "{{ $dateP }}",
+        "modified": "{{ $dateM }}"
+      },
+      "url": "{{ .Page.Permalink }}",
+      "meta": {
+        "type": "{{ .Page.Type }}",
+        "licenses": [{{ range $i, $e := (.Page.Params.licenses) }}{{ if $i }},{{ end }}{"name":"{{ $e }}","url":"https://choosealicense.com/licenses/{{ $e }}"}{{ end }}],
+        "fid": "{{ .File.UniqueID }}",
+        "uuid": "{{ .Page.Params.uuid }}",
+        "sha": "{{ ((.Page.Plain | chomp) | sha1) }}",
+        "word_count": "{{ .Page.WordCount }}",
+        "read_time": "{{ .Page.ReadingTime }}"
+      }
+    }
+  }
+}

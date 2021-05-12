@@ -1,0 +1,62 @@
+{{ $x := (.context | default .) }}
+{{ $subject := ($x.Page.Title | default "" ) }}
+{{ $subject = (htmlEscape (printf "[%s] %s" $x.Site.Title $subject)) }}
+{{ $token := (($x.Site.Params.api.feedback.token | default "") | base64Decode) }}
+
+<div class="row row-cols-1 row-cols-lg-2 g-3">
+  <div class="col">
+    <article>
+      <h4>{{ i18n "info" }}</h4>
+      <div class="article-body">
+        <p>{{ i18n "feedback_p1" }}</p>
+        <p>{{ i18n "feedback_p2" }}</p>
+        <p>{{ i18n "feedback_p3" }}</p>
+      </div>
+    </article>
+  </div>
+  <div class="col">
+    <article>
+      <h4>{{ i18n "feedback" }}</h4>
+      <div class="article-body">
+        <form method="post" action="https://api.staticforms.xyz/submit">
+          <input type="hidden" name="accessKey" value="{{ $token }}"/>
+          <input type="hidden" name="redirectTo" value="{{ $x.Permalink }}"/>
+          <input type="hidden" name="subject" value="{{ $subject }}"/>
+          <input type="text" name="honeypot" style="display: none;"/>
+          <div class="row row-cols-1 g-3">
+            <div class="col">
+              <div class="row row-cols-1 row-cols-lg-2 g-3">
+                <div class="col">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
+                    <input class="form-control" type="text" name="name" placeholder='{{ i18n "form.name" }}' required/>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-envelope-open-text fa-fw"></i></span>
+                    <input class="form-control" type="email" name="email" placeholder='{{ i18n "form.email" }}' required/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row g-3">
+                <div class="col">
+                  <textarea class="form-control" rows="5" name="message" placeholder='{{ i18n "form.message_placeholder" }}' required></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row g-3">
+                <div class="col text-end">
+                  <button class="btn btn-primary" type="submit">{{ i18n "form.submit" }}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </article>
+  </div>
+</div>

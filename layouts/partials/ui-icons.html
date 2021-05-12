@@ -1,0 +1,9 @@
+{{ $sizes := ($.Site.Data.ui.meta.icons.sizes) }}
+
+{{ range ($sizes) }}
+<link rel="icon" type="image/png" sizes="{{ . }}x{{ . }}" href='{{ ((printf "img/icon-%s.png" .) | absURL) }}'/>
+{{ end }}
+
+<link rel="icon" type="image/svg+xml" sizes="any" href='{{ ("img/icon.svg" | absURL) }}'/>
+<link rel="apple-touch-icon" sizes="180x180" href='{{ ("img/icon-180.png" | absURL) }}'/>
+<meta name="theme-color" content="{{ $.Site.Data.ui.meta.color.theme }}"/>

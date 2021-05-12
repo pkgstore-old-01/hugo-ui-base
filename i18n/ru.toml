@@ -1,0 +1,305 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# General
+# ----------------------------------------------------------------------------------------------------------------------
+
+[languages]
+other = "Языки"
+
+[search]
+other = "Поиск"
+
+[search_google]
+other = "Поиск Google"
+
+[search_yandex]
+other = "Поиск Яндекс"
+
+[search_bing]
+other = "Поиск Bing"
+
+[meta]
+other = "Meta"
+
+[categories]
+other = "Категории"
+
+[tags]
+other = "Теги"
+
+[type]
+other = "Тип"
+
+[word_count]
+other = "Количество слов"
+
+[reading_time]
+other = "Время чтения"
+
+[minutes]
+other = "мин."
+
+[article]
+other = "Статья"
+
+[images]
+other = "Изображения"
+
+[audio]
+other = "Аудио"
+
+[video]
+other = "Видео"
+
+[storage]
+other = "Хранилище"
+
+[comments]
+other = "Комментарии"
+
+[info]
+other = "Информация"
+
+[site]
+other = "Сайт"
+
+[email]
+other = "Email"
+
+[contacts]
+other = "Контакты"
+
+[see_also]
+other = "Смотрите также"
+
+[previous]
+other = "Назад"
+
+[next]
+other = "Вперёд"
+
+[links]
+other = "Ссылки"
+
+[read_more]
+other = "Подробнее"
+
+[close]
+other = "Закрыть"
+
+[about]
+other = "О проекте"
+
+[share]
+other = "Поделиться"
+
+[file_id]
+other = "ID файла"
+
+[uuid]
+other = "UUID"
+
+[sys_path]
+other = "Системный путь"
+
+[sources]
+other = "Источники"
+
+[articles]
+other = "Статьи"
+
+[name]
+other = "Имя"
+
+[location]
+other = "Местонахождение"
+
+[phone]
+other = "Телефон"
+
+[message]
+other = "Сообщение"
+
+[submit]
+other = "Отправить"
+
+[license]
+other = "Лицензия"
+
+[files]
+other = "Файлы"
+
+[docs]
+other = "Документы"
+
+[egg]
+other = "Oops!"
+
+[posts]
+other = "Статьи"
+
+[archive]
+other = "Архив"
+
+[donate]
+other = "Поддержка"
+
+[authors]
+other = "Авторы"
+
+[news]
+other = "Новости"
+
+[feedback]
+other = "Обратная связь"
+
+[feedback_p1]
+other = "На этой вкладке Вы можете поделиться своим мнением о статье с администрацией сайта."
+
+[feedback_p2]
+other = ""
+
+[feedback_p3]
+other = ""
+
+[site_resize]
+other = "Изменить размер сайта"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Alerts.
+# ----------------------------------------------------------------------------------------------------------------------
+
+[alert.no_data]
+other = "Нет данных..."
+
+[alert.in_dev]
+other = "Информация на этой странице находится в доработке. Информация может добавляться (и / или) изменяться."
+
+[alert.subjectivity]
+other = "Информация на этой странице является субъективным мнением автора."
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Browser console.
+# ----------------------------------------------------------------------------------------------------------------------
+
+[console.buy_me]
+other = "Купите мне"
+
+[console.about_me]
+other = "Обо мне"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# 404 Page
+# ----------------------------------------------------------------------------------------------------------------------
+
+[404.homepage]
+other = "Главная страница"
+
+[404.archive]
+other = "Архив"
+
+[404.b1_h1]
+other = "Страница не найдена (404)"
+
+[404.b1_p1]
+other = "Неверный адрес, либо страница больше не существует."
+
+[404.b1_p2]
+other = "Перейдите на главную страницу, либо в архив."
+
+[404.b2_h1]
+other = "Поиск информации"
+
+[404.b2_p1]
+other = "Попробуйте поискать необходимую информацию при помощи поисковой системы."
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Social
+# ----------------------------------------------------------------------------------------------------------------------
+
+[facebook]
+other = "Facebook"
+
+[twitter]
+other = "Twitter"
+
+[vk]
+other = "ВКонтакте"
+
+[youtube]
+other = "YouTube"
+
+[instagram]
+other = "Instagram"
+
+[github]
+other = "GitHub"
+
+[gitlab]
+other = "GitLab"
+
+[bitbucket]
+other = "BitBucket"
+
+[patreon]
+other = "Patreon"
+
+[reddit]
+other = "Reddit"
+
+[linkedIn]
+other = "LinkedIn"
+
+[hackerNews]
+other = "Hacker News"
+
+[ok]
+other = "Одноклассники"
+
+[skype]
+other = "Skype"
+
+[telegram]
+other = "Telegram"
+
+[tumblr]
+other = "Tumblr"
+
+[liveJournal]
+other = "LiveJournal"
+
+[pocket]
+other = "Pocket"
+
+[digg]
+other = "Digg"
+
+[wordpress]
+other = "WordPress"
+
+[blogger]
+other = "Blogger"
+
+[pinterest]
+other = "Pinterest"
+
+[whatsapp]
+other = "WhatsApp"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Contact Form
+# ----------------------------------------------------------------------------------------------------------------------
+
+[form.name]
+other = "Имя"
+
+[form.email]
+other = "Email"
+
+[form.phone]
+other = "Телефон"
+
+[form.message_placeholder]
+other = "Введите сообщение..."
+
+[form.submit]
+other = "Отправить"

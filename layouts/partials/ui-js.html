@@ -1,0 +1,39 @@
+{{ $scripts := ($.Site.Data.ui.scripts) }}
+
+<!-- vendor-external -->
+{{ with ($scripts.vendor.external) }}
+{{ range . }}
+<script src="{{ . }}" crossorigin="anonymous" defer></script>
+{{ end }}
+{{ end }}
+<!-- / vendor-external -->
+
+<!-- vendor-internal -->
+{{ with ($scripts.vendor.internal) }}
+{{ $bundle := slice }}
+{{ range . }}
+{{ $bundle = ($bundle | append (resources.Get .)) }}
+{{ end }}
+
+{{ $bundle = ($bundle | resources.Concat "js/vendor.bundle.js") }}
+{{ $bundle = ($bundle | minify) }}
+
+<script src="{{ $bundle.RelPermalink }}" defer></script>
+{{ end }}
+<!-- / vendor-internal -->
+
+<!-- ui-internal -->
+{{ with ($scripts.system.internal) }}
+{{ $bundle := slice }}
+{{ range . }}
+{{ $bundle = ($bundle | append (resources.Get .)) }}
+{{ end }}
+
+{{ $bundle = (($bundle | resources.Concat "js/system.bundle.js") | js.Build) }}
+{{ $bundle = ($bundle | resources.ExecuteAsTemplate ("js/system.bundle.js" | relLangURL) .) }}
+{{ $bundle = ($bundle | minify) }}
+
+<script src="{{ $bundle.RelPermalink }}" defer></script>
+{{ end }}
+
+<!-- / ui-internal -->

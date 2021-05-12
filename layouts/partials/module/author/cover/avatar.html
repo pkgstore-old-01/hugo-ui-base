@@ -1,0 +1,12 @@
+{{ $x := (.context | default .) }}
+
+{{ $size := ($x.Site.Data.cfg.author.avatar_size) }}
+{{ $width := ($size) }}{{ $height := ($size) }}
+{{ $hash := (md5 .File.UniqueID) }}
+{{ with ($x.Params.author.contacts.email) }}{{ $hash = (md5 .) }}{{ end }}
+
+<a class="d-inline-block cover-image cover-author cover-avatar" href="{{ $x.Page.RelPermalink }}">
+  <picture>
+    <img class="img-thumbnail" src='https://gravatar.com/avatar/{{ $hash }}?s={{ $size }}&amp;d=identicon' width="{{ $width }}" height="{{ $height }}" alt="Avatar" loading="lazy"/>
+  </picture>
+</a>

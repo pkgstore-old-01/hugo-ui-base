@@ -1,0 +1,85 @@
+{{ $x := (.context | default .) }}
+
+<div class="node-meta">
+  <article>
+    <h4>{{ i18n "meta" }}</h4>
+    <div class="article-body">
+      {{ with ($x.Params.licenses) }}
+      <ul class="row list-unstyled">
+        <li class="col-4">
+          <span>{{ i18n "license" }}</span>
+        </li>
+        <li class="col">
+          <ol class="ps-3">
+            {{ range . }}
+            <li>
+              <a href="https://choosealicense.com/licenses/{{ . }}" target="_blank" rel="noopener nofollow">{{ (. | upper) }}</a>
+            </li>
+            {{ end }}
+          </ol>
+        </li>
+      </ul>
+      {{ end }}
+      {{ with ($x.File) }}
+      <ul class="row list-unstyled">
+        <li class="col-4">
+          <span>{{ i18n "file_id" }}</span>
+        </li>
+        <li class="col">
+          <input type="text" class="form-control" value="{{ .UniqueID }}" data-ext-fn="ext-select-all" readonly/>
+        </li>
+      </ul>
+      {{ end }}
+      {{ with ($x.Params.uuid) }}
+      <ul class="row list-unstyled">
+        <li class="col-4">
+          <span>{{ i18n "uuid" }}</span>
+        </li>
+        <li class="col">
+          <input type="text" class="form-control" value="{{ $x.Params.uuid }}" data-ext-fn="ext-select-all" readonly/>
+        </li>
+      </ul>
+      {{ end }}
+      {{ with ($x.File) }}
+      <ul class="row list-unstyled">
+        <li class="col-4">
+          <span>{{ i18n "sys_path" }}</span>
+        </li>
+        <li class="col">
+          <input type="text" class="form-control" value="{{ $x.Path }}" data-ext-fn="ext-select-all" readonly/>
+        </li>
+      </ul>
+      {{ end }}
+      {{ with ($x.Type) }}
+      <ul class="row list-unstyled">
+        <li class="col-4">
+          <span>{{ i18n "type" }}</span>
+        </li>
+        <li class="col">
+          <input type="text" class="form-control" value="{{ $x.Type }}" data-ext-fn="ext-select-all" readonly/>
+        </li>
+      </ul>
+      {{ end }}
+      {{ with ($x.WordCount) }}
+      <ul class="row list-unstyled">
+        <li class="col-4">
+          <span>{{ i18n "word_count" }}</span>
+        </li>
+        <li class="col">
+          <input type="text" class="form-control" value="{{ $x.WordCount }}" data-ext-fn="ext-select-all" readonly/>
+        </li>
+      </ul>
+      {{ end }}
+      {{ with ($x.ReadingTime) }}
+      <ul class="row list-unstyled">
+        <li class="col-4">
+          <span>{{ i18n "reading_time" }} ({{ i18n "minutes" }})</span>
+        </li>
+        <li class="col">
+          <input type="text" class="form-control" value="{{ $x.ReadingTime }}" data-ext-fn="ext-select-all" readonly/>
+        </li>
+      </ul>
+      {{ end }}
+    </div>
+  </article>
+</div>

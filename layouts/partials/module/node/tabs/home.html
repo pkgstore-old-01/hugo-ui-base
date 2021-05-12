@@ -1,0 +1,9 @@
+{{ $x := (.context | default .) }}
+{{ $content := (.content | default "") }}
+
+<div class="article-body">
+  {{ partial "alert/in-dev" (dict "context" $x) }}
+  {{ partial "alert/subjectivity" (dict "context" $x) }}
+  {{ $content }}
+  {{ partial "module/node/sources" (dict "context" $x) }}
+</div>

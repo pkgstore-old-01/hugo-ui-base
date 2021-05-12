@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+<div class="section py-3 py-md-5">
+  <div class="container">
+    {{ partial "breadcrumb" . }}
+    <article>
+      <header>
+        <div class="article-cover mb-3">
+          {{ partial "module/node/cover/image" (dict "context" .) }}
+          {{ partial "module/author/cover/avatar" (dict "context" .) }}
+        </div>
+        <div class="article-title">
+          <h1 class="h2 text-center">{{ .Title }}</h1>
+        </div>
+      </header>
+      <footer>
+        <ul class="list-inline text-center text-muted small">
+          {{ with (.Params.author.user) }}
+          <li class="list-inline-item">@{{ . }}</li>
+          <li class="list-inline-item">&bull;</li>
+          {{ end }}
+          <li class="list-inline-item">
+            <time datetime='{{ (.Date.UTC.Format "2006-01-02T15:04:05Z07:00") }}' data-ext-fn="ext-date-local">
+              {{ (.Date.UTC.Format "2006/01/02 15:04 MST") }}
+            </time>
+          </li>
+        </ul>
+      </footer>
+      {{ $contacts := (partial "module/author/contacts" (dict "context" .)) }}
+      {{ $content := (delimit (slice $contacts .Content) "") }}
+      {{ partial "module/node/tabs/_tabs" (dict "context" . "content" $content) }}
+    </article>
+  </div>
+</div>
+
+{{ end }}

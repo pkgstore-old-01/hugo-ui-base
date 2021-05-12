@@ -1,0 +1,23 @@
+{{ $x := (.context | default .) }}
+
+<!-- utterances -->
+{{ with ($x.Site.Params.comments.utterances.repo) }}
+{{ $repo := ($x.Site.Params.comments.utterances.repo | default "") }}
+{{ $theme := ($x.Site.Params.comments.utterances.theme | default "github-light") }}
+
+{{ $term := "" }}
+{{ with ($x.Params.uuid) }}
+{{ $term = ($x.Params.uuid | relLangURL) }}
+{{ end }}
+
+{{ $issue_term := ($term | default $x.RelPermalink) }}
+
+<script src="https://utteranc.es/client.js"
+        repo="{{ $repo }}"
+        issue-term="{{ $issue_term }}"
+        theme="{{ $theme }}"
+        crossorigin="anonymous"
+        async>
+</script>
+{{ end }}
+<!-- / utterances -->

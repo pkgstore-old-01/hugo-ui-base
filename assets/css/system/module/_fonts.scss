@@ -1,0 +1,127 @@
+$font-path: '/fonts';
+
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+  url('#{$font-path}/roboto-condensed/roboto-condensed.400.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+  url('#{$font-path}/roboto-condensed/roboto-condensed.400i.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+  url('#{$font-path}/roboto-condensed/roboto-condensed.700.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 700;
+  src: local(''),
+  url('#{$font-path}/roboto-condensed/roboto-condensed.700i.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+  url('#{$font-path}/roboto/roboto.400.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+  url('#{$font-path}/roboto/roboto.400i.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+  url('#{$font-path}/roboto/roboto.700.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  src: local(''),
+  url('#{$font-path}/roboto/roboto.700i.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+  url('#{$font-path}/pt-serif/pt-serif.400.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+  url('#{$font-path}/pt-serif/pt-serif.400i.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+  url('#{$font-path}/pt-serif/pt-serif.700.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 700;
+  src: local(''),
+  url('#{$font-path}/pt-serif/pt-serif.700i.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+  url('#{$font-path}/fira-code/fira-code.400.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+  url('#{$font-path}/fira-code/fira-code.700.woff2') format('woff2');
+}

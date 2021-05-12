@@ -1,0 +1,47 @@
+{{ $x := (.context | default .) }}
+{{ $id := (printf "node-cover-%s" ($x.File.UniqueID | default "")) }}
+{{ $img_int := (($x.Page.Resources.Match "storage/cover.*") | default "") }}
+{{ $img_ext := ($x.Params.images | default (slice "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3")) }}
+
+{{ $width := ($x.Site.Data.cfg.sidebar.news.cover_size | default "120") }}
+{{ $height := ($x.Site.Data.cfg.sidebar.news.cover_size | default "120") }}
+{{ $crop := ($x.Params.cover.image.crop | default "entropy") }}
+{{ $fit := "crop" }}
+
+<div class="cover-image cover-node cover-news">
+  {{ with ($img_int) }}
+
+  <!-- image-internal -->
+  {{ range $key, $src := . | first 1 }}
+  {{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
+  {{ $filename := (.Name | path.Base) }}
+  <div>
+    <a class="d-block" href="{{ $x.RelPermalink }}">
+      <img class="d-block rounded" src="{{ $thumb.RelPermalink }}" width="{{ $width }}" height="{{ $height }}" alt="Image" loading="lazy"/>
+    </a>
+  </div>
+  {{ end }}
+  <!-- / image-internal -->
+
+  {{ else }}
+
+  <!-- image-external -->
+  {{ range $key, $src := $img_ext | first 1 }}
+  <div>
+    <a class="d-block" href="{{ $x.RelPermalink }}">
+      {{ $url := (urls.Parse $src) }}
+      {{ if (eq $url.Host "images.unsplash.com") }}
+      <img class="d-block rounded"
+           src="{{ $src }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format"
+           width="{{ $width }}" height="{{ $height }}"
+           alt="{{ $src }}" loading="lazy"/>
+      {{ else }}
+      <img class="d-block rounded" src="{{ $src }}" width="{{ $width }}" height="{{ $height }}" alt="{{ $src }}" loading="lazy"/>
+      {{ end }}
+    </a>
+  </div>
+  {{ end }}
+  <!-- / image-external -->
+
+  {{ end }}
+</div>
