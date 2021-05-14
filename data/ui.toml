@@ -61,7 +61,6 @@ external = []
 internal = [
   'js/vendor/popper.min.js',
   'js/vendor/bootstrap.min.js',
-  'js/vendor/spotlight.bundle.min.js',
   'js/vendor/qrcode.min.js'
 ]
 

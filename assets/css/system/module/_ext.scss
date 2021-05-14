@@ -1,7 +1,8 @@
-.modal-open {
-  > header,
-  > footer,
-  > .wrapper {
-    filter: blur(.5rem);
-  }
+.figure {
+  display: table;
+}
+
+.figure-caption {
+  display: table-caption;
+  caption-side: bottom;
 }
