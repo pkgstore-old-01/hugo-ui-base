@@ -32,7 +32,7 @@
 </div>
 <footer class="mt-auto">{{ partial "footer" . }}</footer>
 
-{{ partial "module/eggs" (dict "context" . "image" $.Site.Data.cfg.egg.img.src) }}
+{{ partial "module/eggs" (dict "context" .) }}
 
 <!-- scripts -->
 {{ partial "ui-js" . }}

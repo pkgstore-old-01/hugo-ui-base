@@ -1,5 +1,7 @@
 {{ $x := (.context | default .) }}
-{{ $img := (.image | default "") }}
+{{ $img_src := ($x.Site.Data.cfg.egg.img.src | default "") }}
+{{ $img_width := ($x.Site.Data.cfg.egg.img.width | default "") }}
+{{ $img_height := ($x.Site.Data.cfg.egg.img.height | default "") }}
 
 <div class="modal fade" id="ext-egg" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -9,7 +11,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label='{{ i18n "close" }}'></button>
       </div>
       <div class="modal-body">
-        <img class="img-fluid" src="{{ $img }}" alt="" loading="lazy"/>
+        <img class="d-block w-100 h-100" src="{{ $img_src }}" width="{{ $img_width }}" height="{{ $img_height }}" alt="{{ $img_src }}" loading="lazy"/>
       </div>
     </div>
   </div>

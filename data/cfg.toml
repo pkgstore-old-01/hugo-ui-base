@@ -70,3 +70,5 @@ cover_crop = 'entropy'
 
 [egg.img]
 src = "https://i.imgur.com/CvvIjqE.gif"
+width = "498"
+height = "331"
