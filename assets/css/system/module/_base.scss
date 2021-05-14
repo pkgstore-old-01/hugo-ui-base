@@ -57,23 +57,25 @@ body {
 }
 
 body {
-  > .wrapper {
-    > footer {
-      > .section {
-        &:nth-child(even) {
-          background-color: $color-01;
-        }
-
-        &:nth-child(odd) {
-          background-color: $color-01;
-        }
+  > footer {
+    > .section {
+      &:nth-child(even) {
+        background-color: $color-01;
       }
 
-      .fa-heart {
-        color: #fe6e3a;
+      &:nth-child(odd) {
+        background-color: $color-01;
       }
     }
 
+    .fa-heart {
+      color: #fe6e3a;
+    }
+  }
+}
+
+body {
+  > .wrapper {
     > main {
       .node-icon {
         $size: 4rem;

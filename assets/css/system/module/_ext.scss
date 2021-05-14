@@ -1,0 +1,7 @@
+.modal-open {
+  > header,
+  > footer,
+  > .wrapper {
+    filter: blur(.5rem);
+  }
+}
