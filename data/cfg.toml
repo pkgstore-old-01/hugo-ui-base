@@ -51,6 +51,21 @@ on = 1
 [node.comments]
 on = 1
 
+[node.comments.disqus]
+on = 0
+
+[node.comments.facebook]
+on = 0
+
+[node.comments.github]
+on = 1
+
+[node.comments.twitter]
+on = 1
+
+[node.comments.vk]
+on = 0
+
 [node.feedback]
 on = 1
 

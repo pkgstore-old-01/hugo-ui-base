@@ -5,7 +5,7 @@
   <ul id="{{ $id }}" class="flex-column nav nav-pills me-3" data-ext-fn="ext-node-comments-tabs" role="tablist" aria-orientation="vertical">
 
     <!-- comments-utterances -->
-    {{ with ($x.Site.Params.comments.utterances.repo) }}
+    {{ if (and ($x.Site.Data.cfg.node.comments.github.on) ($x.Site.Params.comments.utterances.repo)) }}
     <li class="nav-item" role="presentation">
       <button title='{{ i18n "github" }}' class="nav-link active" id="node-comments-github-tab" data-bs-toggle="pill" data-bs-target="#node-comments-github" type="button" role="tab" aria-controls="node-comments-github" aria-selected="true">
         <i class="fab fa-github fa-fw"></i>
@@ -15,7 +15,7 @@
     <!-- / comments-utterances -->
 
     <!-- comments-tweets -->
-    {{ with ($x.Params.tweets) }}
+    {{ if (and ($x.Site.Data.cfg.node.comments.twitter.on) ($x.Params.tweets)) }}
     <li class="nav-item" role="presentation">
       <button title='{{ i18n "twitter" }}' class="nav-link" id="node-comments-twitter-tab" data-bs-toggle="pill" data-bs-target="#node-comments-twitter" type="button" role="tab" aria-controls="node-comments-twitter" aria-selected="false">
         <i class="fab fa-twitter fa-fw"></i>
@@ -25,7 +25,7 @@
     <!-- / comments-tweets -->
 
     <!-- comments-vk -->
-    {{ with ($x.Site.Params.api.vk.app_id) }}
+    {{ if (and ($x.Site.Data.cfg.node.comments.vk.on) ($x.Site.Params.api.vk.app_id)) }}
     <li class="nav-item" role="presentation">
       <button title='{{ i18n "vk" }}' class="nav-link" id="node-comments-vk-tab" data-bs-toggle="pill" data-bs-target="#node-comments-vk" type="button" role="tab" aria-controls="node-comments-vk" aria-selected="false">
         <i class="fab fa-vk fa-fw"></i>
@@ -35,15 +35,17 @@
     <!-- / comments-vk -->
 
     <!-- comments-facebook -->
+    {{ if ($x.Site.Data.cfg.node.comments.facebook.on) }}
     <li class="nav-item" role="presentation">
       <button title='{{ i18n "facebook" }}' class="nav-link" id="node-comments-facebook-tab" data-bs-toggle="pill" data-bs-target="#node-comments-facebook" type="button" role="tab" aria-controls="node-comments-facebook" aria-selected="false">
         <i class="fab fa-facebook fa-fw"></i>
       </button>
     </li>
+    {{ end }}
     <!-- / comments-facebook -->
 
     <!-- comments-disqus -->
-    {{ with ($x.Site.DisqusShortname) }}
+    {{ if (and ($x.Site.Data.cfg.node.comments.disqus.on) ($x.Site.DisqusShortname)) }}
     <li class="nav-item" role="presentation">
       <button title='{{ i18n "disqus" }}' class="nav-link" id="node-comments-disqus-tab" data-bs-toggle="pill" data-bs-target="#node-comments-disqus" type="button" role="tab" aria-controls="node-comments-disqus" aria-selected="false">
         <i class="fab fa-disqus fa-fw"></i>
@@ -56,7 +58,7 @@
   <div class="tab-content flex-grow-1">
 
     <!-- comments-utterances -->
-    {{ with ($x.Site.Params.comments.utterances.repo) }}
+    {{ if (and ($x.Site.Data.cfg.node.comments.github.on) ($x.Site.Params.comments.utterances.repo)) }}
     <div class="tab-pane show active" id="node-comments-github" role="tabpanel" aria-labelledby="node-comments-github-tab">
       {{ partial "module/node/tabs/comments/github" (dict "context" $x) }}
     </div>
@@ -64,7 +66,7 @@
     <!-- / comments-utterances -->
 
     <!-- comments-tweets -->
-    {{ with ($x.Params.tweets) }}
+    {{ if (and ($x.Site.Data.cfg.node.comments.twitter.on) ($x.Params.tweets)) }}
     <div class="tab-pane" id="node-comments-twitter" role="tabpanel" aria-labelledby="node-comments-twitter-tab">
       {{ partial "module/node/tabs/comments/twitter" (dict "context" $x) }}
     </div>
@@ -72,7 +74,7 @@
     <!-- / comments-tweets -->
 
     <!-- comments-vk -->
-    {{ with ($x.Site.Params.api.vk.app_id) }}
+    {{ if (and ($x.Site.Data.cfg.node.comments.vk.on) ($x.Site.Params.api.vk.app_id)) }}
     <div class="tab-pane" id="node-comments-vk" role="tabpanel" aria-labelledby="node-comments-vk-tab">
       {{ partial "module/node/tabs/comments/vk" (dict "context" $x) }}
     </div>
@@ -80,13 +82,15 @@
     <!-- / comments-vk -->
 
     <!-- comments-facebook -->
+    {{ if ($x.Site.Data.cfg.node.comments.facebook.on) }}
     <div class="tab-pane" id="node-comments-facebook" role="tabpanel" aria-labelledby="node-comments-facebook-tab">
       {{ partial "module/node/tabs/comments/facebook" (dict "context" $x) }}
     </div>
+    {{ end }}
     <!-- / comments-facebook -->
 
     <!-- comments-disqus -->
-    {{ with $x.Site.DisqusShortname }}
+    {{ if (and ($x.Site.Data.cfg.node.comments.disqus.on) ($x.Site.DisqusShortname)) }}
     <div class="tab-pane" id="node-comments-disqus" role="tabpanel" aria-labelledby="node-comments-disqus-tab">
       {{ partial "module/node/tabs/comments/disqus" (dict "context" $x) }}
     </div>

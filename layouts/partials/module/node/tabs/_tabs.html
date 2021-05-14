@@ -26,38 +26,32 @@
   <!-- / node-info -->
 
   <!-- node-storage -->
-  {{ if ($x.Site.Data.cfg.node.storage.on) }}
-  {{ with ($storage) }}
+  {{ if (and ($x.Site.Data.cfg.node.storage.on) ($storage)) }}
   <li class="nav-item" role="presentation">
     <button title='{{ i18n "storage" }}' class="nav-link" id="node-storage-tab" data-bs-toggle="tab" data-bs-target="#node-storage" type="button" role="tab" aria-controls="node-storage" aria-selected="false">
       <i class="fas fa-hdd fa-fw"></i>
     </button>
   </li>
   {{ end }}
-  {{ end }}
   <!-- / node-storage -->
 
   <!-- node-comments -->
-  {{ if ($x.Site.Data.cfg.node.comments.on) }}
-  {{ with ($x.Params.comments) }}
+  {{ if (and ($x.Site.Data.cfg.node.comments.on) ($x.Params.comments)) }}
   <li class="nav-item" role="presentation">
     <button title='{{ i18n "comments" }}' class="nav-link" id="node-comments-tab" data-bs-toggle="tab" data-bs-target="#node-comments" type="button" role="tab" aria-controls="node-comments" aria-selected="false">
       <i class="fas fa-comments fa-fw"></i>
     </button>
   </li>
   {{ end }}
-  {{ end }}
   <!-- / node-comments -->
 
   <!-- node-feedback -->
-  {{ if ($x.Site.Data.cfg.node.feedback.on) }}
-  {{ with ($x.Params.feedback) }}
+  {{ if (and ($x.Site.Data.cfg.node.feedback.on) ($x.Params.feedback)) }}
   <li class="nav-item" role="presentation">
     <button title='{{ i18n "feedback" }}' class="nav-link" id="node-feedback-tab" data-bs-toggle="tab" data-bs-target="#node-feedback" type="button" role="tab" aria-controls="node-feedback" aria-selected="false">
       <i class="fas fa-comment-dots fa-fw"></i>
     </button>
   </li>
-  {{ end }}
   {{ end }}
   <!-- / node-feedback -->
 
@@ -107,32 +101,26 @@
   <!-- / node-info -->
 
   <!-- node-storage -->
-  {{ if ($x.Site.Data.cfg.node.storage.on) }}
-  {{ with ($storage) }}
+  {{ if (and ($x.Site.Data.cfg.node.storage.on) ($storage)) }}
   <div class="tab-pane" id="node-storage" role="tabpanel" aria-labelledby="node-storage-tab">
     {{ partial "module/node/tabs/storage/_tabs" (dict "context" $x) }}
   </div>
   {{ end }}
-  {{ end }}
   <!-- / node-storage -->
 
   <!-- node-comments -->
-  {{ if ($x.Site.Data.cfg.node.comments.on) }}
-  {{ with ($x.Params.comments) }}
+  {{ if (and ($x.Site.Data.cfg.node.comments.on) ($x.Params.comments)) }}
   <div class="tab-pane" id="node-comments" role="tabpanel" aria-labelledby="node-comments-tab">
     {{ partial "module/node/tabs/comments/_tabs" (dict "context" $x) }}
   </div>
   {{ end }}
-  {{ end }}
   <!-- / node-comments -->
 
   <!-- node-feedback -->
-  {{ if ($x.Site.Data.cfg.node.feedback.on) }}
-  {{ with ($x.Params.feedback) }}
+  {{ if (and ($x.Site.Data.cfg.node.feedback.on) ($x.Params.feedback)) }}
   <div class="tab-pane" id="node-feedback" role="tabpanel" aria-labelledby="node-feedback-tab">
     {{ partial "module/node/tabs/feedback" (dict "context" $x) }}
   </div>
-  {{ end }}
   {{ end }}
   <!-- / node-feedback -->
 
