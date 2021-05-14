@@ -11,6 +11,13 @@ body {
     &-body {
       @include font-serif();
 
+      @for $i from 1 through 2 {
+        h#{$i} {
+          border-bottom: 1px solid #dee2e6;
+          padding-bottom: .5rem;
+        }
+      }
+
       blockquote {
         font-size: 1.25rem;
         border-left: .5rem solid #f8f9fa;
