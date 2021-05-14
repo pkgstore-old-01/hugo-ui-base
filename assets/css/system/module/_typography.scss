@@ -12,7 +12,7 @@ body {
       @include font-serif();
 
       @for $i from 1 through 2 {
-        h#{$i} {
+        > h#{$i} {
           border-bottom: 1px solid #dee2e6;
           padding-bottom: .5rem;
         }
