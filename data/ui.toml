@@ -59,9 +59,10 @@ internal = [
 [scripts.vendor]
 external = []
 internal = [
-  'js/vendor/popper.min.js',
-  'js/vendor/bootstrap.min.js',
-  'js/vendor/qrcode.min.js'
+  'js/vendor/module/popper/popper.min.js',
+  'js/vendor/module/bootstrap/bootstrap.min.js',
+  'js/vendor/module/spotlight/spotlight.bundle.min.js',
+  'js/vendor/module/qrcode/qrcode.min.js'
 ]
 
 [scripts.system]

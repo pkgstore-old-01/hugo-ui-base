@@ -9,15 +9,13 @@
   <div class="row row-cols-auto g-3 spotlight-group" data-ext-fn="ext-gallery">
     {{ range . }}
     {{ if (in .MediaType.MainType "image") }}
-    {{ $id := (delimit (shuffle (seq 999)) "" | md5) }}
     {{ $src := . }}{{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
     <div class="col">
-      <a class="d-inline-block" href="{{ $src.RelPermalink }}" data-bs-toggle="modal" data-bs-target="#modal-{{ $id }}">
+      <a class="d-inline-block spotlight" href="{{ $src.RelPermalink }}" data-title="{{ (.Name | path.Base) }}">
         <picture>
           <img class="img-thumbnail" src="{{ $thumb.RelPermalink }}" width="{{ $width }}" height="{{ $height }}" alt="{{ (.Name | path.Base) }}"/>
         </picture>
       </a>
-      {{ partial "module/modal/image" (dict "context" $x "id" $id "title" (.Name | path.Base) "src" $src.RelPermalink "alt" (.Name | path.Base)) }}
     </div>
     {{ end }}
     {{ end }}
