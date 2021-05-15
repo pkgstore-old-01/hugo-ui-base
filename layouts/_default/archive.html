@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 {{ $posts := (where $.Site.RegularPages "Type" "in" $.Site.Params.sections.blog) }}
-{{ $pag_items := $.Site.Data.cfg.archive.paginate }}
+{{ $pag_items := ($.Site.Data.cfg.archive.paginate) }}
 
 <div class="section py-3 py-md-5">
   <div class="container">

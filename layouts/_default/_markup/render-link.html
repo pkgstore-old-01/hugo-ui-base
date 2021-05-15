@@ -8,7 +8,7 @@
 {{ end }}
 
 {{ $viewer := "" }}
-{{ $files := (slice ".doc" ".docx" ".xls" ".xlsx" ".ppt" ".pptx" ".odt" ".ods" ".odp" ".txt") }}
+{{ $files := (slice ".doc" ".docx" ".xls" ".xlsx" ".ppt" ".pptx" ".odt" ".ods" ".odp") }}
 {{ range $files }}
 {{ with (strings.HasSuffix $href .) }}
 {{ $viewer = "https://view.officeapps.live.com/op/view.aspx?src=" }}
