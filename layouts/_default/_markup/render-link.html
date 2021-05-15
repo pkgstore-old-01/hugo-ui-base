@@ -3,13 +3,16 @@
 {{ $text := (.Text | safeHTML) }}
 
 {{ $target := "_self" }}{{ $rel := "" }}
-{{ if (strings.HasPrefix .Destination "http") }}
+{{ with (strings.HasPrefix .Destination "http") }}
 {{ $target = "_blank" }}{{ $rel = "noopener noreferrer nofollow" }}
 {{ end }}
 
 {{ $viewer := "" }}
-{{ if (or (strings.HasSuffix .Destination ".ppt") (strings.HasSuffix .Destination ".pptx") (strings.HasSuffix .Destination ".doc") (strings.HasSuffix .Destination ".docx") (strings.HasSuffix .Destination ".xls") (strings.HasSuffix .Destination ".xlsx")) }}
+{{ $files := (slice ".doc" ".docx" ".xls" ".xlsx" ".ppt" ".pptx" ".odt" ".ods" ".odp" ".txt") }}
+{{ range $files }}
+{{ with (strings.HasSuffix $href .) }}
 {{ $viewer = "https://view.officeapps.live.com/op/view.aspx?src=" }}
+{{ end }}
 {{ end }}
 
 <a title="{{ $title }}" href="{{ $viewer }}{{ $href }}" target="{{ $target }}" rel="{{ $rel }}">{{ $text }}</a>
