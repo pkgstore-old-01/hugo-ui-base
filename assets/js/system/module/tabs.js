@@ -11,12 +11,11 @@ function active($selector, $button) {
 
   const $elID = document.querySelector($selector).getAttribute('id');
   const $elTabs = document.querySelectorAll($selector + ' ' + $button);
-  const $elTabsLength = $elTabs.length;
   const $storageItem = $elID + '-active';
 
-  for (let $i = 0; $i < $elTabsLength; ++$i) {
-    eventActive($elTabs[$i], $storageItem)
-  }
+  $elTabs.forEach(($i) => {
+    eventActive($i, $storageItem)
+  });
 
   const $tabActive = localStorage.getItem($storageItem);
 

@@ -13,7 +13,7 @@
   <!-- scripts -->
   {{ $js := "js/lang.redirect.min.js" }}
   {{ $script := ((((resources.Get $js) | js.Build) | resources.ExecuteAsTemplate $js .) | minify) }}
-  <script src="{{ $script.RelPermalink }}"></script>
+  <script src="{{ $script.RelPermalink }}" async></script>
   <!-- / scripts -->
 </head>
 <body>

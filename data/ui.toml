@@ -62,12 +62,11 @@ internal = [
   'js/vendor/module/popper/popper.min.js',
   'js/vendor/module/bootstrap/bootstrap.min.js',
   'js/vendor/module/spotlight/spotlight.bundle.min.js',
-  'js/vendor/module/qrcode/qrcode.min.js',
-  'js/vendor/module/highlight/highlight.js'
+  'js/vendor/module/qrcode/qrcode.min.js'
 ]
 
 [scripts.system]
 external = []
 internal = [
-  'js/system.js'
+  'js/system.min.js'
 ]

@@ -5,14 +5,13 @@ export function init() {
 
 function local($selector, $view = 0) {
   const $el = document.querySelectorAll($selector);
-  const $length = $el.length;
   let $utcDate, $localDate;
 
-  for (let $i = 0; $i < $length; ++$i) {
-    $utcDate = $el[$i].getAttribute('datetime');
+  $el.forEach(($i) => {
+    $utcDate = $i.getAttribute('datetime');
     $localDate = date($utcDate, $view);
-    $el[$i].textContent = $localDate;
-  }
+    $i.textContent = $localDate;
+  });
 }
 
 function date($iso, $view) {

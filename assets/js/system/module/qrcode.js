@@ -4,13 +4,12 @@ export function init() {
 
 function generator($selector) {
   const $el = document.querySelectorAll($selector);
-  const $length = $el.length;
   let $text;
 
-  for (let $i = 0; $i < $length; ++$i) {
-    $text = $el[$i].getAttribute('data-ext-text');
-    qrcode($el[$i], $text);
-  }
+  $el.forEach(($i) => {
+    $text = $i.getAttribute('data-ext-text');
+    qrcode($i, $text);
+  });
 }
 
 function qrcode($selector, $text, $size = 128) {

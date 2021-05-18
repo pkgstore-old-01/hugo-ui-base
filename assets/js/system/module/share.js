@@ -4,11 +4,10 @@ export function init() {
 
 function popUp($selector) {
   const $el = document.querySelectorAll($selector);
-  const $length = $el.length;
 
-  for (let $i = 0; $i < $length; ++$i) {
-    eventPopUp($el[$i]);
-  }
+  $el.forEach(($i) => {
+    eventPopUp($i);
+  });
 }
 
 function eventPopUp($i) {

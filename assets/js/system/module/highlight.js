@@ -1,6 +1,6 @@
 export function init() {
   document.addEventListener('DOMContentLoaded', ($e) => {
-    highlight('pre code');
+    highlight('pre > code');
   });
 }
 

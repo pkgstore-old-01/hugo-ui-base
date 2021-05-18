@@ -4,11 +4,10 @@ export function init() {
 
 function selectAll($selector) {
   const $el = document.querySelectorAll($selector);
-  const $length = $el.length;
 
-  for (let $i = 0; $i < $length; ++$i) {
-    eventSelectAll($el[$i]);
-  }
+  $el.forEach(($i) => {
+    eventSelectAll($i);
+  });
 }
 
 function eventSelectAll($i) {

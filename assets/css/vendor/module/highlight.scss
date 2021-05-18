@@ -1,12 +1,14 @@
 @import 'highlight/style';
 
 $bg-color: #333;
+$color: #fff;
 
 body {
   .article {
     &-body {
       pre {
         background-color: $bg-color;
+        color: $color;
       }
     }
   }

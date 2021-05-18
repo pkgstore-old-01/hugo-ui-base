@@ -35,11 +35,10 @@ function event($action) {
 function fluid($action) {
   if ($action === 'on') {
     const $el = document.querySelectorAll('.wrapper .container');
-    const $elLength = $el.length;
 
-    for (let $i = 0; $i < $elLength; ++$i) {
-      $el[$i].classList.replace('container', 'container-fluid');
-    }
+    $el.forEach(($i) => {
+      $i.classList.replace('container', 'container-fluid');
+    });
 
     document.querySelector('body').classList.add('ext-container-fluid');
     localStorage.setItem('site-container', 'fluid');
@@ -49,9 +48,9 @@ function fluid($action) {
     const $el = document.querySelectorAll('.wrapper .container-fluid');
     const $elLength = $el.length;
 
-    for (let $i = 0; $i < $elLength; ++$i) {
-      $el[$i].classList.replace('container-fluid', 'container');
-    }
+    $el.forEach(($i) => {
+      $i.classList.replace('container-fluid', 'container');
+    });
 
     document.querySelector('body').classList.remove('ext-container-fluid');
     localStorage.removeItem('site-container');
