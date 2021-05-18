@@ -7,9 +7,12 @@ function init() {
 function highlight() {
   const $codes = document.querySelectorAll('pre > code');
   const $length = $codes.length;
-  if ($length === 0) return;
+  if ($length === 0) return 0;
 
   $codes.forEach(($code) => {
+    const $no_hl = ['language-nohighlight', 'language-plaintext', 'language-text'];
+    if ($no_hl.some(($i) => $code.classList.contains($i))) return 0;
+
     $code.classList.add('hljs');
     const worker = new Worker('/js/vendor/module/highlight/worker.min.js');
     worker.onmessage = ($event) => {
