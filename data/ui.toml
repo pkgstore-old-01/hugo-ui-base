@@ -15,15 +15,15 @@ sizes = ['16', '24', '32', '48', '64', '72', '80', '96', '128', '144', '152', '1
 
 [network]
 dns_prefetch = [
-# '//fonts.gstatic.com',
-# '//cdn.jsdelivr.net',
+  # '//fonts.gstatic.com',
+  # '//cdn.jsdelivr.net',
   '//gravatar.com',
   '//images.unsplash.com',
   '//i.imgur.com'
 ]
 pre_connect = [
-# 'https://fonts.gstatic.com',
-# 'https://cdn.jsdelivr.net',
+  # 'https://fonts.gstatic.com',
+  # 'https://cdn.jsdelivr.net',
   'https://gravatar.com',
   'https://images.unsplash.com'
 ]
@@ -62,7 +62,8 @@ internal = [
   'js/vendor/module/popper/popper.min.js',
   'js/vendor/module/bootstrap/bootstrap.min.js',
   'js/vendor/module/spotlight/spotlight.bundle.min.js',
-  'js/vendor/module/qrcode/qrcode.min.js'
+  'js/vendor/module/qrcode/qrcode.min.js',
+  'js/vendor/module/highlight/highlight.js'
 ]
 
 [scripts.system]

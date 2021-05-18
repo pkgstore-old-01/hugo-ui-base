@@ -1,0 +1,17 @@
+@import 'highlight/style';
+
+$bg-color: #333;
+
+body {
+  .article {
+    &-body {
+      pre {
+        background-color: $bg-color;
+      }
+
+      .hljs {
+        padding: 1rem;
+      }
+    }
+  }
+}

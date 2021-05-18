@@ -35,10 +35,10 @@ body {
 
       pre {
         @include font-mono();
-        background-color: #f8f9fa;
+        //background-color: #f8f9fa;
         border-radius: .25rem;
         font-size: 1rem;
-        padding: 1rem;
+        //padding: 1rem;
         max-height: 40rem;
 
         > code {
