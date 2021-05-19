@@ -8,7 +8,7 @@
       <div class="col">
         {{ $contacts := (partial "module/author/contacts" (dict "context" .)) }}
         {{ $summary := (delimit (slice .Summary "") "") }}
-        {{ partial "summary" (dict "context" . "summary" $summary "view" "2") }}
+        {{ partial "summary" (dict "context" . "summary" $summary "view" "user-00") }}
       </div>
       {{ end }}
     </div>

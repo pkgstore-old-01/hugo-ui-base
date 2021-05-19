@@ -7,7 +7,7 @@
       {{ range (.Paginator.Pages) }}
       <div class="col">
         {{ $summary := (delimit (slice .Summary "") "") }}
-        {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+        {{ partial "summary" (dict "context" . "summary" $summary "view" "node-00") }}
       </div>
       {{ end }}
     </div>

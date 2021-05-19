@@ -28,7 +28,7 @@
     <div class="col">
       {{ range (first 1 .) }}
       {{ $summary := (delimit (slice .Summary "") "") }}
-      {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+      {{ partial "summary" (dict "context" . "summary" $summary "view" "node-00") }}
       {{ end }}
     </div>
     <div class="col">
@@ -36,7 +36,7 @@
         {{ range (after 1 .) }}
         <div class="col">
           {{ $summary := (delimit (slice .Summary "") "") }}
-          {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+          {{ partial "summary" (dict "context" . "summary" $summary "view" "node-00") }}
         </div>
         {{ end }}
       </div>
@@ -49,7 +49,7 @@
         {{ range . }}
         <div class="col">
           {{ $summary := (delimit (slice .Summary "") "") }}
-          {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+          {{ partial "summary" (dict "context" . "summary" $summary "view" "node-00") }}
         </div>
         {{ end }}
       </div>
