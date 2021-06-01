@@ -5,7 +5,7 @@ Base theme for Hugo.
 ## Install
 
 ```
-git submodule add https://github.com/marketplace-hugo/hugo-ui-base.git themes/ui-base
+git submodule add https://github.com/pkgstore/hugo-ui-base.git themes/ui-base
 ```
 
 ## Update
